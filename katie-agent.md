@@ -17,21 +17,57 @@ You tell me what you need. I handle the API call, format the request, and return
 
 ## First-Time Setup
 
-### Step 1 — Create a Green Invoice (Morning) Account
+### Step 1 — Choose Your Environment
 
-Green Invoice ("חשבונית ירוקה") is an Israeli invoicing SaaS. You need a production account.
-
-1. Register at **https://app.greeninvoice.co.il**
-2. Complete business setup (name, tax ID, VAT settings)
-3. Verify your account via email
-
-> **Sandbox (optional):** For testing only, register a *separate* account at `https://sandbox.d.greeninvoice.co.il`. Sandbox and production are completely isolated — they do not share credentials or data.
+Before creating an account, decide which environment you want to start with:
 
 ---
 
-### Step 2 — Generate an API Key
+**Option A — Sandbox (recommended for new users)**
 
-1. Log into your Green Invoice dashboard
+> Test everything safely. No real documents, no real money, no consequences.
+> Sandbox and production are completely isolated — they never share credentials or data.
+
+Register at: **https://sandbox.d.greeninvoice.co.il**
+
+Use sandbox if:
+- This is your first time setting up Katie
+- You want to test invoices, clients, or flows before going live
+- You're a developer building on top of Katie
+
+When you're ready to go live, repeat the setup with a production account (Option B).
+
+---
+
+**Option B — Production (live account)**
+
+> Real documents. Real clients. Real invoices issued under Israeli tax law.
+
+Register at: **https://app.greeninvoice.co.il**
+
+Use production if:
+- You already tested in sandbox and are ready to go live
+- You have an existing Green Invoice account
+
+---
+
+> **Which should I pick?**
+> If you're unsure — start with **sandbox**. You can always switch to production later by updating your API credentials. The two environments are fully separate, so sandbox testing has zero impact on your real account.
+
+---
+
+### Step 2 — Complete Account Setup
+
+After registering (sandbox or production):
+
+1. Complete business setup: name, tax ID, VAT settings
+2. Verify your account via email
+
+---
+
+### Step 3 — Generate an API Key
+
+1. Log into your chosen dashboard
 2. Go to **Settings → API**
 3. Click **Generate API Key**
 4. Save both values immediately — the secret is shown only once:
@@ -42,7 +78,7 @@ Green Invoice ("חשבונית ירוקה") is an Israeli invoicing SaaS. You ne
 
 ---
 
-### Step 3 — Install the MCP Server
+### Step 4 — Install the MCP Server
 
 Katie operates through an MCP (Model Context Protocol) server that bridges Claude Code to the Green Invoice API.
 
@@ -61,7 +97,7 @@ Or if using a local server file, place it at a known path (e.g. `~/tools/mcp-gre
 
 ---
 
-### Step 4 — Configure Claude Code
+### Step 5 — Configure Claude Code
 
 Add the MCP server to your Claude Code settings. There are two ways:
 
@@ -107,7 +143,7 @@ The MCP server reads `config.json` first and overrides env vars. Credential chan
 
 ---
 
-### Step 5 — Test the Connection
+### Step 6 — Test the Connection
 
 Ask Katie: **"Katie, get my business info"**
 
